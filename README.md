@@ -4,6 +4,15 @@ Flask + Python service that ingests daily fixtures from **API-Football (RapidAPI
 
 > Sister repo: [`pro-analyzer`](../pro-analyzer) (Next.js / React frontend).
 
+Enter Virtual Environment
+```bash
+source venv/bin/activate
+```
+
+Run Flask development server
+```bash
+flask --app wsgi run --debug
+```
 ---
 
 ## 1. What this service does
