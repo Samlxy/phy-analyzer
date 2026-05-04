@@ -67,7 +67,8 @@ class MockProvider(DataProvider):
         # Return a few generic past matches.
         return [{"fixture": {"id": 999999, "date": "2026-04-01T12:00:00Z", "status": {"short": "FT"}},
                 "goals": {"home": 1, "away": 2},
-                "teams": {"home": {"name": f"Opponent {team_id}"}, "away": {"name": f"Team {team_id}"}}}
+                "teams": {"home": {"id": 4000 + team_id, "name": f"Opponent {team_id}"}, 
+                         "away": {"id": team_id, "name": f"Team {team_id}"}}}
                 for _ in range(min(n, 3))]
 
     def team_matches_before(self, team_id: int, before: date, n: int = 10) -> list[dict[str, Any]]:
@@ -77,7 +78,8 @@ class MockProvider(DataProvider):
     def head_to_head(self, home_id: int, away_id: int, n: int = 5) -> list[dict[str, Any]]:
         return [{"fixture": {"id": 888888, "date": "2026-03-15T15:00:00Z", "status": {"short": "FT"}},
                 "goals": {"home": 2, "away": 2},
-                "teams": {"home": {"name": f"Team {home_id}"}, "away": {"name": f"Team {away_id}"}}}
+                "teams": {"home": {"id": home_id, "name": f"Team {home_id}"}, 
+                         "away": {"id": away_id, "name": f"Team {away_id}"}}}
                 for _ in range(min(n, 3))]
 
     def odds_for_fixture(self, fixture_id: int) -> dict[str, float]:
